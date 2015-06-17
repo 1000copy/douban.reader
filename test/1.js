@@ -1,3 +1,4 @@
+var superagent = require('superagent');
 /*
         */
 
@@ -51,15 +52,110 @@ var douban_readed = require("../lib/douban.readed.js").douban_readed
 
 var expect = require("chai").expect
 describe('cheerio', function(){
-  it('html2 log', function(){    
-    var r = douban_readed(html)
-    expect(r).to.deep.equal(
-        [ { title: 'CATIA V5应用教程',
-        href: 'http://book.douban.com/subject/3151806/',
-        date: '2015-06-10' },
-        { title: '黄花梨把玩艺术',
-        href: 'http://book.douban.com/subject/26004316/',
-        date: '2015-06-06' } ]
-        )
-  })  
+    // it('html2 log', function(){    
+    //     var r = douban_readed(html)
+    //     expect(r).to.deep.equal(
+    //         [ { title: 'CATIA V5应用教程',
+    //         href: 'http://book.douban.com/subject/3151806/',
+    //         date: '2015-06-10' },
+    //         { title: '黄花梨把玩艺术',
+    //         href: 'http://book.douban.com/subject/26004316/',
+    //         date: '2015-06-06' } ]
+    //         )
+    // })  
+    it('html2 fetch', function(){ 
+        // (function a()
+        // {
+        //     var superagent = require('superagent');
+        //     url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
+        //     console.log("url");
+        //     console.log(url);
+        //     superagent.get(url)
+        //       .end(function (err, sres) {
+        //         if (err) {
+        //           console.log(err); 
+        //           return next(err);
+        //         }
+        //         console.log(s.res.text.slice(0,200))
+        //         // savehtml(sres.text)            
+        //       });
+        //     function savehtml(text){
+        //       var fs = require('fs');
+        //       fs.writeFile("../data/1.html",text, function(err) {
+        //           if(err) {
+        //               return console.log(err);
+        //           }
+        //           console.log("The file was saved!");
+        //       }); 
+        //     }
+        // })
+        (function(){
+            var superagent = require('superagent');
+            var url = 'https://cnodejs.org/'            
+            url = "www.163.com"
+            superagent.get(url)
+              .end(function (err, sres) {
+                if (err) {
+                  return next(err);
+                }
+                console.log("sres.text")
+                // savehtml(sres.text)            
+              });
+            // function savehtml(text){
+            //   var fs = require('fs');
+            //   fs.writeFile("1.html",text, function(err) {
+            //       if(err) {
+            //           return console.log(err);
+            //       }
+            //       console.log("The file was saved!");
+            //   }); 
+            // }
+
+            }) ()
+    })
+  it('html2 fetch2', function(){ 
+        var superagent = require('superagent');
+            var url = 'https://cnodejs.org/'            
+            url = "www.163.com"
+            superagent.get(url)
+              .end(function (err, sres) {
+                if (err) {
+                  return next(err);
+                }
+                console.log("sres.text")
+                // savehtml(sres.text)            
+              });
+    })
+  it('ex', function(){ 
+    expect(1)  .to.equal(1)
+  })
+  it('ex2', function(){ 
+        var superagent = require('superagent');
+        var url = 'https://cnodejs.org/'            
+        superagent.get(url)
+          .end(function (err, sres) {
+            if (err) {
+              return next(err);
+            }
+            expect(1)  .to.equal(1)
+            console.log("sres.text")
+            // savehtml(sres.text)            
+          });
+    
+  })
+  it('ex3', function(){ 
+        url = 'https://cnodejs.org/'
+        // url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
+        superagent.get(url)
+          .end(function (err, sres) {
+            if (err) {
+              return next(err);
+            }
+            // var r = hackhtml(sres.text)        
+            console.log(sres.text.slice(0,200))
+          });
+
+  })
 })
+
+

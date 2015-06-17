@@ -53,14 +53,23 @@ function childBy1(element,tag){
   return undefined
 }
 url = 'https://cnodejs.org/'
-url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
+// url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
 superagent.get(url)
+  
   .end(function (err, sres) {
     if (err) {
       return next(err);
     }
-    var r = hackhtml(sres.text)        
-    console.log(r)
+    // var r = hackhtml(sres.text)        
+    console.log(sres.text.slice(0,400))
   });
 
+
+// <html>
+// <head><title>403 Forbidden</title></head>
+// <body bgcolor="white">
+// <center><h1>403 Forbidden</h1></center>
+// <hr><center>nginx</center>
+// </body>
+// </html>
 
