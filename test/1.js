@@ -138,14 +138,29 @@ describe('cheerio', function(){
               return next(err);
             }
             expect(1)  .to.equal(1)
-            console.log("sres.text")
+            // console.log("sres.text")
             // savehtml(sres.text)            
           });
     
   })
-  it('ex3', function(){ 
+  // 异步代码测试，已经记得要有callback ！
+  // 对比ex4，没有done的callback，它就完全不等异步代码执行完毕。坑。
+  // it('ex3', function(){ 
+  //       url = 'https://cnodejs.org/'
+  //       // url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
+  //       superagent.get(url)
+  //         .end(function (err, sres) {
+  //           if (err) {
+  //             return next(err);
+  //           }
+  //           // var r = hackhtml(sres.text)        
+  //           console.log(sres.text.slice(0,200))
+  //           // done()
+  //         });
+  // })
+  it('ex4', function(done){ 
         url = 'https://cnodejs.org/'
-        // url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
+        url = "http://book.douban.com/people/1830596/collect?sort=time&filter=all&mode=list&tags_sort=count&count=100&start=0"
         superagent.get(url)
           .end(function (err, sres) {
             if (err) {
@@ -153,8 +168,8 @@ describe('cheerio', function(){
             }
             // var r = hackhtml(sres.text)        
             console.log(sres.text.slice(0,200))
+            done()
           });
-
   })
 })
 
